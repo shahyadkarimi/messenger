@@ -1,0 +1,13 @@
+body {
+  font-family: "Poppins";
+}
+
+/* sidebar friends section */
+.all-friends::-webkit-scrollbar {
+  width: 5px;
+}
+
+.all-friends::-webkit-scrollbar-thumb {
+  background: #2e343d;
+  border-radius: 50px;
+}
