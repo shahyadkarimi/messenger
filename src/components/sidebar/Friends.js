@@ -1,7 +1,7 @@
 import React from 'react'
 
 // images
-import avatar from "../images/profile-avatar.jpg"
+import avatar from "../../images/profile-avatar.jpg"
 
 const Friends = () => {
     return (
