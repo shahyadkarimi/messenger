@@ -11,3 +11,23 @@ body {
   background: #2e343d;
   border-radius: 50px;
 }
+
+/* messages section */
+.messages::-webkit-scrollbar {
+  width: 5px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background: #2e343d;
+  border-radius: 50px;
+}
+
+.message.owner {
+  flex-direction: row-reverse;
+}
+
+.message.owner .message-content {
+  align-items: flex-end;
+  background-color: #6b8afd;
+  border-radius: 5px 5px 0 5px;
+}

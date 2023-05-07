@@ -1,16 +1,17 @@
 import React from "react";
 
 // components
+import Messages from "./Messages";
 import SendMsg from "./SendMsg"
 
 const ChatPage = () => {
   return (
-    <div className="chat-page w-[70%] rounded-3xl">
+    <div className="chat-page w-[70%] rounded-3xl px-10">
       {/* user profile info */}
-      <div className="user-info h-12 flex justify-between items-center px-10">
+      <div className="user-info h-12 flex justify-between items-center mb-3">
         <div className="left-side">
           <h2 className="username text-light text-lg">Shahyad</h2>
-          <span className="text-[#9c9c9c] text-sm">offline</span>
+          <span className="text-[#9c9c9c] text-sm block -mt-1">online</span>
         </div>
         <div className="right-side flex items-center gap-6">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 stroke-light">
@@ -28,12 +29,12 @@ const ChatPage = () => {
         </div>
       </div>
 
-      {/* Chat Page */}
-      <div className="chat-page w-full h-[calc(100%-104px)]">
-
+      {/* Messages */}
+      <div className="messages w-full h-[calc(100%-100px)] pr-2 overflow-y-scroll">
+        <Messages />
       </div>
       {/* Send Message */}
-      <div className="px-10">
+      <div>
         <SendMsg />
       </div>
     </div>

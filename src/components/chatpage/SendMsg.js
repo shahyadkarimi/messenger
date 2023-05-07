@@ -3,7 +3,7 @@ import React from 'react'
 const SendMsg = () => {
     return (
         <div className="SendMsg">
-            <div className="w-full h-14 flex gap-4 items-center justify-between px-3">
+            <div className="w-full h-12 flex gap-4 items-center justify-between">
                 <div className="file-upload">
                     <input type="file" className="hidden" id="file" />
                     <label className="cursor-pointer" htmlFor="file">
@@ -25,4 +25,4 @@ const SendMsg = () => {
     )
 }
 
-export default SendMsg
+export default SendMsg;
