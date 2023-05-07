@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 // components
 import Messages from "./Messages";
@@ -10,7 +11,7 @@ const ChatPage = () => {
       {/* user profile info */}
       <div className="user-info h-12 flex justify-between items-center mb-3">
         <div className="left-side">
-          <h2 className="username text-light text-lg">Shahyad</h2>
+          <Link to="/register" className="username text-light text-lg">Shahyad</Link>
           <span className="text-[#9c9c9c] text-sm block -mt-1">online</span>
         </div>
         <div className="right-side flex items-center gap-6">
