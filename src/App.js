@@ -1,5 +1,5 @@
 import React from "react"
-import {  Routes, Route } from  "react-router-dom"
+import {  Routes, Route } from "react-router-dom"
 
 // css styles
 import "./index.css"
