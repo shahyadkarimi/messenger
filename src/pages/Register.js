@@ -24,7 +24,6 @@ const Register = () => {
       // create a ref and image name
       const storageRef = ref(storage, username);
       // upload image
-      const storageRef = ref(storage, username);
       const uploadTask = uploadBytesResumable(storageRef, profile);
 
       uploadTask.on(

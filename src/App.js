@@ -1,9 +1,6 @@
 import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-
 // css styles
 import "./index.css";
 import "./css/style.css";

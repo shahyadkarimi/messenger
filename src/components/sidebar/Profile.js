@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { signOut } from "firebase/auth"
 
 // images
 import avatar from "../../images/profile-avatar.jpg";
 import { auth } from "../../firebase";
 
+// contexts
+import { authContext } from "../../contexts/AuthContext"
+
 const Profile = () => {
+
+  const { user } = useContext(authContext)
+
   return (
     <div className="mb-4 flex items-center justify-between">
       <div className="flex gap-3 items-center text-lg text-light">
-        <img src={avatar} className="w-12 rounded-md" alt="" />
-        <h2>Shahyad</h2>
+        <img src={user.photoURL} className="w-12 rounded-md" alt="" />
+        <h2>{user.displayName}</h2>
       </div>
       <button className="logout" onClick={() => signOut(auth)}>
         <svg
