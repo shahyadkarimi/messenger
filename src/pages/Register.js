@@ -1,28 +1,18 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
 import { Link, useNavigate } from "react-router-dom";
-=======
-import { Link } from "react-router-dom";
->>>>>>> 097b892fd65ee1cdf1dcf07cd23afe1cf3adec48
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db, storage } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { doc, setDoc } from "firebase/firestore"
+import { doc, setDoc } from "firebase/firestore";
 
 const Register = () => {
   const [err, setErr] = useState(false);
 
-<<<<<<< HEAD
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
 
-=======
-  const submitHandler = async (e) => {
-    e.preventDefault();
-
->>>>>>> 097b892fd65ee1cdf1dcf07cd23afe1cf3adec48
     const username = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
@@ -31,54 +21,35 @@ const Register = () => {
     try {
       // create account
       const res = await createUserWithEmailAndPassword(auth, email, password);
-
-<<<<<<< HEAD
       // create a ref and image name
       const storageRef = ref(storage, username);
       // upload image
-=======
       const storageRef = ref(storage, username);
->>>>>>> 097b892fd65ee1cdf1dcf07cd23afe1cf3adec48
       const uploadTask = uploadBytesResumable(storageRef, profile);
 
       uploadTask.on(
         (err) => {
-<<<<<<< HEAD
-          console.log(err)
+          console.log(err);
         },
         () => {
           // get uploaded image download link
-          getDownloadURL(uploadTask.snapshot.ref).then( async (downloadURL) => {
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
             // update user info and add username & profile image link
-=======
-          setErr(true)
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then( async (downloadURL) => {
->>>>>>> 097b892fd65ee1cdf1dcf07cd23afe1cf3adec48
             await updateProfile(res.user, {
-                displayName: username,
-                photoURL: downloadURL,
-            })
-
-<<<<<<< HEAD
+              displayName: username,
+              photoURL: downloadURL,
+            });
             // add user to database
-=======
->>>>>>> 097b892fd65ee1cdf1dcf07cd23afe1cf3adec48
             await setDoc(doc(db, "users", res.user.uid), {
               uid: res.user.uid,
               displayName: username,
               email,
-              photoURL: downloadURL
-            })
-<<<<<<< HEAD
-
+              photoURL: downloadURL,
+            });
             // create chat
-            await setDoc(doc(db, "userChats", res.user.uid), {})
-            
-            navigate("/")
-=======
->>>>>>> 097b892fd65ee1cdf1dcf07cd23afe1cf3adec48
+            await setDoc(doc(db, "userChats", res.user.uid), {});
+
+            navigate("/");
           });
         }
       );

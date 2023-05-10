@@ -1,10 +1,8 @@
-<<<<<<< HEAD
 import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-=======
-import React from "react"
-import {  Routes, Route } from "react-router-dom"
->>>>>>> 097b892fd65ee1cdf1dcf07cd23afe1cf3adec48
+
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
 // css styles
 import "./index.css";
@@ -27,7 +25,7 @@ const App = () => {
       return <Navigate to="/login" />;
     }
 
-    return children
+    return children;
   };
 
   return (
