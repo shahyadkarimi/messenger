@@ -1,5 +1,5 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useContext } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 // css styles
 import "./index.css";
@@ -11,19 +11,33 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 
 // contexts
-import AuthContext from "./contexts/AuthContext";
+
+import { authContext } from "./contexts/AuthContext";
 
 const App = () => {
+  const { user } = useContext(authContext);
+
+  const NavigateLogin = ({ children }) => {
+    if (!user) {
+      return <Navigate to="/login" />;
+    }
+  };
+
   return (
-    <AuthContext>
-      <div className="messenger h-screen bg-[#131313] flex justify-center items-center">
-        <Routes>
-          <Route index path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      </div>
-    </AuthContext>
+    <div className="messenger h-screen bg-[#131313] flex justify-center items-center">
+      <Routes path="/">
+        <Route
+          index
+          element={
+            <NavigateLogin>
+              <Home />
+            </NavigateLogin>
+          }
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </div>
   );
 };
 
