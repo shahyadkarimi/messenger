@@ -57,29 +57,29 @@ const Search = () => {
 
         // create user chat
         await updateDoc(doc(db, "userChats", user.uid), {
-            [combindId+"userInfo"]: {
-                uid: friend.uid,
-                displayName: friend.displayName,
-                photoURL: friend.photoURL,
-            },
-            [combindId+"date"]: serverTimestamp()
-        })
+          [combindId + ".userInfo"]: {
+            uid: friend.uid,
+            displayName: friend.displayName,
+            photoURL: friend.photoURL,
+          },
+          [combindId + ".date"]: serverTimestamp(),
+        });
 
         await updateDoc(doc(db, "userChats", friend.uid), {
-            [combindId+"userInfo"]: {
-                uid: user.uid,
-                displayName: user.displayName,
-                photoURL: user.photoURL,
-            },
-            [combindId+"date"]: serverTimestamp()
-        })
+          [combindId + ".userInfo"]: {
+            uid: user.uid,
+            displayName: user.displayName,
+            photoURL: user.photoURL,
+          },
+          [combindId + ".date"]: serverTimestamp(),
+        });
       }
     } catch (err) {
-        setErr(true)
+      setErr(true);
     }
 
-    setUsername("")
-    setFriend(null)
+    setUsername("");
+    setFriend(null);
   };
 
   return (
