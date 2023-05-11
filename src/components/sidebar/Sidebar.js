@@ -7,10 +7,10 @@ import Profile from './Profile'
 
 const Sidebar = () => {
     return (
-        <div className="sidebar w-[35%] bg-slate-800">
+        <div className="sidebar w-[35%] h-full flex flex-col gap-3 bg-slate-800">
             <Profile />
             <Search />
-            <div className="all-friends h-[490px] flex flex-col gap-2 mt-4 pr-2 overflow-y-scroll">
+            <div className="all-friends flex flex-col gap-2 pr-2 overflow-y-scroll">
                 <Friends />
                 <Friends />
                 <Friends />

@@ -13,7 +13,7 @@ const Profile = () => {
   const { user } = useContext(authContext)
 
   return (
-    <div className="mb-4 flex items-center justify-between">
+    <div className="flex items-center justify-between">
       <div className="flex gap-3 items-center text-lg text-light">
         <img src={user.photoURL} className="w-12 rounded-md" alt="" />
         <h2>{user.displayName}</h2>
