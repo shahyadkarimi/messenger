@@ -11,22 +11,19 @@ import { chatContext } from "../../contexts/ChatContext";
 const Messages = () => {
   const [messages, setMessages] = useState([]);
   const { data } = useContext(chatContext);
-    console.log(data)
 
   useEffect(() => {
-    const unsub = onSnapshot(doc(db, "chats", data.chatId), (doc)=> {
-        doc.exists() && setMessages(doc.data().messages)
-    })
+    const unsub = onSnapshot(doc(db, "chats", data.chatId), (doc) => {
+      doc.exists() && setMessages(doc.data().messages);
+    });
 
-   return (
-       unsub()
-   )
+    return unsub();
   }, [data.chatId]);
 
   return (
     <div>
-      {messages.map(m => {
-        <Message msg={m} />
+      {messages.map((m) => {
+        <Message msg={m} />;
       })}
     </div>
   );
