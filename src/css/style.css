@@ -2,7 +2,7 @@ body {
   font-family: "Poppins";
 }
 
-/* sidebar friends section */
+/***** sidebar section *****/
 .all-friends::-webkit-scrollbar {
   width: 5px;
 }
@@ -12,7 +12,7 @@ body {
   border-radius: 50px;
 }
 
-/* messages section */
+/***** messages section *****/
 .messages::-webkit-scrollbar {
   width: 5px;
 }
@@ -22,6 +22,7 @@ body {
   border-radius: 50px;
 }
 
+/* current user message */
 .message.owner {
   flex-direction: row-reverse;
 }
@@ -29,5 +30,13 @@ body {
 .message.owner .message-content {
   align-items: flex-end;
   background-color: #6b8afd;
-  border-radius: 5px 5px 0 5px;
+  border-radius: 16px 16px 0 16px;
+}
+
+.time.owner {
+  right: 4px;
+}
+
+.time.false {
+  left: 4px;
 }

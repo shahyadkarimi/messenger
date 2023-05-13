@@ -1,15 +1,22 @@
 import React, { useContext } from "react";
+import { timeConverter } from "../../helper/functions";
 
 // context
 import { chatContext } from "../../contexts/ChatContext";
 
 const Friends = ({ usersData }) => {
   const { data, dispatch } = useContext(chatContext);
+
   return (
-    <div onClick={() => dispatch({type:"CHANGE_USER", payload: usersData[1].userInfo})} className="friends w-full relative flex items-center gap-3 hover:bg-gray-light cursor-pointer p-3 rounded-2xl transition-all duration-200">
+    <div
+      onClick={() =>
+        dispatch({ type: "CHANGE_USER", payload: usersData[1].userInfo })
+      }
+      className="friends w-full relative flex items-center gap-3 hover:bg-gray-light cursor-pointer p-3 rounded-2xl transition-all duration-200"
+    >
       <img
         src={usersData[1].userInfo.photoURL}
-        className="w-12 rounded-md"
+        className="w-12 rounded-xl"
         alt=""
       />
       <div className="profile-info">
@@ -21,7 +28,7 @@ const Friends = ({ usersData }) => {
         </p>
       </div>
       <span className="msg-time text-[12px] text-[#9c9c9c] absolute top-4 right-3">
-        4 m
+        {timeConverter(usersData[1].date?.seconds)}
       </span>
     </div>
   );

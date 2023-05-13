@@ -18,7 +18,7 @@ const ChatPage = () => {
         <div className="left-side flex items-center gap-2 ">
           <img
             src={data.user?.photoURL}
-            className="w-12 rounded-md"
+            className="w-12 rounded-xl"
             alt=""
           />
           <div className="name-status">

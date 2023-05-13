@@ -15,7 +15,7 @@ const Profile = () => {
   return (
     <div className="flex items-center justify-between">
       <div className="flex gap-3 items-center text-lg text-light">
-        <img src={user.photoURL} className="w-12 rounded-md" alt="" />
+        <img src={user.photoURL} className="w-12 rounded-xl" alt="" />
         <h2>{user.displayName}</h2>
       </div>
       <button className="logout" onClick={() => signOut(auth)}>
