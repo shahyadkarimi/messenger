@@ -13,18 +13,20 @@ const Messages = () => {
   const { data } = useContext(chatContext);
 
   useEffect(() => {
-    const unsub = onSnapshot(doc(db, "chats", data.chatId), (doc) => {
+    const unSub = onSnapshot(doc(db, "chats", data.chatId), (doc) => {
       doc.exists() && setMessages(doc.data().messages);
     });
 
-    return unsub();
+    return () => {
+      unSub();
+    };
   }, [data.chatId]);
 
   return (
     <div>
-      {messages.map((m) => {
-        <Message msg={m} />;
-      })}
+      {messages.map((m) => (
+        <Message msg={m} key={m.id} />
+      ))}
     </div>
   );
 };

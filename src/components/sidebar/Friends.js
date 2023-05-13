@@ -5,7 +5,6 @@ import { chatContext } from "../../contexts/ChatContext";
 
 const Friends = ({ usersData }) => {
   const { data, dispatch } = useContext(chatContext);
-    console.log(usersData)
   return (
     <div onClick={() => dispatch({type:"CHANGE_USER", payload: usersData[1].userInfo})} className="friends w-full relative flex items-center gap-3 hover:bg-gray-light cursor-pointer p-3 rounded-2xl transition-all duration-200">
       <img

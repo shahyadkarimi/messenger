@@ -44,6 +44,8 @@ const SendMsg = () => {
                 image: downloadURL,
               }),
             });
+            setText("");
+            setImage(null);
           });
         }
       );
@@ -56,8 +58,10 @@ const SendMsg = () => {
           date: Timestamp.now(),
         }),
       });
-    }
 
+      setText("");
+      setImage(null);
+    }
     // current user
     await updateDoc(doc(db, "userChats", user.uid), {
       [data.chatId + ".lastmessage"]: {
@@ -68,14 +72,11 @@ const SendMsg = () => {
 
     // other user
     await updateDoc(doc(db, "userChats", data.user.uid), {
-        [data.chatId + ".lastmessage"]: {
-          text,
-        },
-        [data.chatId + ".date"]: serverTimestamp(),
-      });
-
-    setText("");
-    setImage(null);
+      [data.chatId + ".lastmessage"]: {
+        text,
+      },
+      [data.chatId + ".date"]: serverTimestamp(),
+    });
   };
 
   return (

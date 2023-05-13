@@ -17,13 +17,13 @@ const ChatPage = () => {
       <div className="user-info h-12 flex justify-between items-center mb-3">
         <div className="left-side flex items-center gap-2 ">
           <img
-            src={data.user.userInfo?.photoURL}
+            src={data.user?.photoURL}
             className="w-12 rounded-md"
             alt=""
           />
           <div className="name-status">
             <h2 className="username text-light text-lg">
-              {data.user.userInfo?.displayName}
+              {data.user?.displayName}
             </h2>
             <span className="text-[#9c9c9c] text-sm block">online</span>
           </div>

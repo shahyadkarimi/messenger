@@ -34,7 +34,8 @@ const Sidebar = () => {
         <Profile />
         <Search />
         <div className="all-friends flex flex-col gap-2 pr-2 overflow-y-scroll">
-          {Object.entries(friends)?.map((friend) => (
+          {/* convert to object and sort by last message */}
+          {Object.entries(friends)?.sort((a,b)=> b[1].date - a[1].date).map((friend) => (
             <Friends usersData={friend} key={friend[0]}/>
           ))}
         </div>
