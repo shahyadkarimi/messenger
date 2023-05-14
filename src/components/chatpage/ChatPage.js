@@ -6,9 +6,11 @@ import SendMsg from "./SendMsg";
 //
 // context
 import { chatContext } from "../../contexts/ChatContext";
+import { authContext } from "../../contexts/AuthContext";
 
 const ChatPage = () => {
   const { data } = useContext(chatContext);
+  const { user } = useContext(authContext);
 
   return (
     <div
