@@ -33,10 +33,38 @@ body {
   border-radius: 16px 16px 0 16px;
 }
 
-.time.owner {
+.message.owner {
   right: 4px;
 }
 
-.time.false {
+.message.false {
   left: 4px;
 }
+
+/***** messages corner *****/
+/* message corner fo current user */
+.message .msg-corner::before {
+  content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #202329;
+    border-radius: 0 50px 50px 50px;
+    right: -7px;
+    top: 0px;
+}
+
+/* message corner for other user */
+.message.false .corner-pos {
+  left: -8px;
+}
+
+.message.false .msg-corner {
+  background: #2e343d;
+}
+
+.message.false .msg-corner::before {
+  left: -7px;
+  border-radius: 50px 0 50px 50px;
+}
+/* 202329 */
