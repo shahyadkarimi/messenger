@@ -1,8 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useReducer,
-} from "react";
+import React, { createContext, useContext, useReducer } from "react";
 import { authContext } from "./AuthContext";
 
 export const chatContext = createContext();
@@ -10,7 +6,7 @@ export const chatContext = createContext();
 const ChatContext = ({ children }) => {
   const { user } = useContext(authContext);
 
-  const INITIAL_STATE = {
+  let INITIAL_STATE = {
     chatId: "null",
     user: {},
   };

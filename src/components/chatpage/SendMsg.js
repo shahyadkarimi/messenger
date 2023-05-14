@@ -22,7 +22,7 @@ const SendMsg = () => {
   const { data } = useContext(chatContext);
 
   const sendHandler = async () => {
-    if (image) {
+    if ((image)) {
       // create a ref and image name
       const storageRef = ref(storage, uuid());
       // upload image
@@ -50,33 +50,36 @@ const SendMsg = () => {
         }
       );
     } else {
-      await updateDoc(doc(db, "chats", data.chatId), {
-        messages: arrayUnion({
-          id: uuid(),
+      if (text) {
+        await updateDoc(doc(db, "chats", data.chatId), {
+          messages: arrayUnion({
+            id: uuid(),
+            text,
+            senderId: user.uid,
+            date: Timestamp.now(),
+          }),
+        });
+        setText("");
+        setImage(null);
+      }
+    }
+    if (text) {
+      // current user
+      await updateDoc(doc(db, "userChats", user.uid), {
+        [data.chatId + ".lastmessage"]: {
           text,
-          senderId: user.uid,
-          date: Timestamp.now(),
-        }),
+        },
+        [data.chatId + ".date"]: serverTimestamp(),
       });
 
-      setText("");
-      setImage(null);
+      // other user
+      await updateDoc(doc(db, "userChats", data.user.uid), {
+        [data.chatId + ".lastmessage"]: {
+          text,
+        },
+        [data.chatId + ".date"]: serverTimestamp(),
+      });
     }
-    // current user
-    await updateDoc(doc(db, "userChats", user.uid), {
-      [data.chatId + ".lastmessage"]: {
-        text,
-      },
-      [data.chatId + ".date"]: serverTimestamp(),
-    });
-
-    // other user
-    await updateDoc(doc(db, "userChats", data.user.uid), {
-      [data.chatId + ".lastmessage"]: {
-        text,
-      },
-      [data.chatId + ".date"]: serverTimestamp(),
-    });
   };
 
   return (

@@ -4,4 +4,18 @@ const timeConverter = (time) => {
     return myDate.toTimeString().slice(0, 5)
 }
 
-export { timeConverter };
+// limit message character in sidebar frineds section
+const limitMsgLength = (msg) => {
+    let message;
+
+    if(msg?.length > 20) {
+        message = msg.substring(0, 25)
+        return message + "..."
+    } else {
+        message = msg;
+        return msg
+    }
+    
+}
+
+export { timeConverter, limitMsgLength };

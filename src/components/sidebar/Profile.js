@@ -1,24 +1,28 @@
 import React, { useContext } from "react";
-import { signOut } from "firebase/auth"
-
-// images
-import avatar from "../../images/profile-avatar.jpg";
+import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 
 // contexts
-import { authContext } from "../../contexts/AuthContext"
+import { authContext } from "../../contexts/AuthContext";
+import { chatContext } from "../../contexts/ChatContext";
 
 const Profile = () => {
+  const { user } = useContext(authContext);
+  const { data } = useContext(chatContext);
 
-  const { user } = useContext(authContext)
+  const logoutHandler = () => {
+    signOut(auth);
+    data.chatId = "null";
+    data.user = {};
+  };
 
   return (
     <div className="flex items-center justify-between">
       <div className="flex gap-3 items-center text-lg text-light">
-        <img src={user.photoURL} className="w-12 rounded-xl" alt="" />
+        <img src={user.photoURL} className="w-12 h-12 object-cover rounded-xl" alt="" />
         <h2>{user.displayName}</h2>
       </div>
-      <button className="logout" onClick={() => signOut(auth)}>
+      <button className="logout" onClick={logoutHandler}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
