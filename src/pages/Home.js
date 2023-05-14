@@ -1,22 +1,18 @@
-import React, { useContext } from 'react'
+import React from "react";
 
 // components
-import Sidebar from "../components/sidebar/Sidebar" 
-import ChatPage from "../components/chatpage/ChatPage"
+import Sidebar from "../components/sidebar/Sidebar";
+import ChatPage from "../components/chatpage/ChatPage";
 
 // contexts
-import { authContext } from "../contexts/AuthContext"
 
 const Home = () => {
+  return (
+    <div className="home w-[1000px] h-[650px] bg-gray-dark rounded-3xl flex gap-4 p-4">
+      <Sidebar />
+      <ChatPage />
+    </div>
+  );
+};
 
-    const { user } = useContext(authContext)
-
-    return (
-        <div className="home w-[1000px] h-[650px] bg-gray-dark rounded-3xl flex gap-4 p-4">
-            <Sidebar />
-            <ChatPage />
-        </div>
-    )
-}
-
-export default Home
+export default Home;

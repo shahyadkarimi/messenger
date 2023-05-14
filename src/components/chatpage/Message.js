@@ -24,7 +24,7 @@ const Message = ({ msg }) => {
     >
       <div className="user-info flex flex-col justify-center gap-1 self-end">
         <img
-          className="w-12 rounded-xl"
+          className="w-12 h-12 object-cover rounded-xl"
           src={msg.senderId === user.uid ? user.photoURL : data.user.photoURL}
           alt=""
         />
@@ -33,7 +33,7 @@ const Message = ({ msg }) => {
         {msg.image && (
           <img className="w-60 rounded-2xl" src={msg.image} alt="" />
         )}
-        <p className="max-w-fit py-1 px-3 pb-4 rounded-lg">{msg.text}</p>
+        <p className="max-w-xs h-auto break-words py-1 px-3 pb-4 rounded-lg">{msg.text}</p>
         <span className="time absolute text-[11px] bottom-[2px]">
           {timeConverter(msg.date?.seconds)}
         </span>
