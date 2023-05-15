@@ -45,13 +45,13 @@ body {
 /* message corner fo current user */
 .message .msg-corner::before {
   content: "";
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    background: #202329;
-    border-radius: 0 50px 50px 50px;
-    right: -7px;
-    top: 0px;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #202329;
+  border-radius: 0 50px 50px 50px;
+  right: -7px;
+  top: 0px;
 }
 
 /* message corner for other user */
@@ -67,4 +67,45 @@ body {
   left: -7px;
   border-radius: 50px 0 50px 50px;
 }
-/* 202329 */
+
+/***** loading *****/
+
+.loader {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  position: relative;
+  animation: rotation 1s linear infinite;
+}
+.loader::after,
+.loader::before {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 50%;
+  left: 50%;
+  transform: scale(0.5) translate(0, 0);
+  background-color: #c3c3c3;
+  border-radius: 50%;
+  animation: loader 1s infinite ease-in-out;
+}
+.loader::before {
+  background-color: #6b8afd;
+  transform: scale(0.5) translate(-48px, -48px);
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader {
+  50% {
+    transform: scale(1) translate(-50%, -50%);
+  }
+}

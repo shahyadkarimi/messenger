@@ -5,15 +5,20 @@ import { auth } from "../../firebase";
 // contexts
 import { authContext } from "../../contexts/AuthContext";
 import { chatContext } from "../../contexts/ChatContext";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const { user } = useContext(authContext);
   const { data } = useContext(chatContext);
 
+  const navigate = useNavigate()
+
   const logoutHandler = () => {
     signOut(auth);
     data.chatId = "null";
     data.user = {};
+
+    navigate("/login")
   };
 
   return (

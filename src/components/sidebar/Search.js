@@ -19,8 +19,7 @@ import { chatContext } from "../../contexts/ChatContext";
 const Search = () => {
   const [username, setUsername] = useState("");
   const [friend, setFriend] = useState(null);
-  const [err, setErr] = useState(false);
-  console.log(err);
+
   const { user } = useContext(authContext);
   const { dispatch } = useContext(chatContext);
 
@@ -36,7 +35,7 @@ const Search = () => {
         setFriend(u.data());
       });
     } catch (err) {
-      setErr(true);
+      console.log(err)
     }
   };
 
@@ -77,7 +76,7 @@ const Search = () => {
         dispatch({ type: "CHANGE_USER", payload: friend });
       }
     } catch (err) {
-      setErr(true);
+      console.log(err)
     }
   };
 

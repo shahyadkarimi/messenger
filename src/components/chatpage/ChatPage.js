@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 // components
 import Messages from "./Messages";
 import SendMsg from "./SendMsg";
-//
+
 // context
 import { chatContext } from "../../contexts/ChatContext";
 
@@ -77,9 +77,7 @@ const ChatPage = () => {
               </svg>
             </div>
           </div>
-          <div className="messages w-full h-[calc(100%-100px)] pr-2 overflow-y-scroll">
-            <Messages />
-          </div>
+          <Messages />
           <div>
             <SendMsg />
           </div>
