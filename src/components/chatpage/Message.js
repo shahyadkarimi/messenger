@@ -31,9 +31,9 @@ const Message = ({ msg }) => {
       </div>
       <div className="message-content relative text-[#fff] bg-gray-light max-w-[80%] flex flex-col p-1 gap-1 rounded-2xl rounded-bl-none z-10">
         {msg.image && (
-          <img className="w-60 rounded-2xl" src={msg.image} alt="" />
+          <img className="w-52 lg:w-60 rounded-2xl" src={msg.image} alt="" />
         )}
-        <p className="max-w-xs h-auto break-words py-1 px-3 pb-4 rounded-lg">{msg.text}</p>
+        <p className="max-w-[250px] lg:max-w-xs h-auto text-sm lg:text-base break-words py-1 px-3 pb-4 rounded-lg">{msg.text}</p>
         <span className="time absolute text-[11px] bottom-[2px]">
           {timeConverter(msg.date?.seconds)}
         </span>

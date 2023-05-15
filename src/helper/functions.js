@@ -9,7 +9,7 @@ const limitMsgLength = (msg) => {
     let message;
 
     if(msg?.length > 20) {
-        message = msg.substring(0, 25)
+        message = msg.substring(0, 20)
         return message + "..."
     } else {
         message = msg;

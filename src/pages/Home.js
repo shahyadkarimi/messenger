@@ -13,7 +13,7 @@ const Home = () => {
   }, 2000);
 
   return (
-    <div className="home relative w-[1000px] h-[650px] bg-gray-dark rounded-3xl flex gap-4 p-4 overflow-hidden">
+    <div className="home relative w-full h-full lg:w-[1000px] lg:h-[650px] bg-gray-dark lg:rounded-3xl flex lg:gap-4 lg:p-4">
       {loading && <Loading />}
       <Sidebar />
       <ChatPage />

@@ -29,7 +29,7 @@ const ChatPage = () => {
 
   return (
     <div
-      className={`chat-page w-[70%] rounded-3xl px-10 ${
+      className={`chat-page p-2 lg:py-0 w-full lg:w-[70%] lg:px-10 ${
         !data.user.displayName && "flex justify-center items-center"
       }`}
     >

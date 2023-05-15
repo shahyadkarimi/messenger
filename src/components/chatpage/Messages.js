@@ -28,7 +28,7 @@ const Messages = () => {
   }, [data.chatId]);
 
   return (
-    <div className="messages relative w-full h-[calc(100%-100px)] pr-2 overflow-y-scroll">
+    <div className="messages relative w-full h-[calc(100%-110px)] lg:h-[calc(100%-100px)] p-2 overflow-y-scroll">
       {loading && <Loading />}
       {messages.map((m) => (
         <Message msg={m} key={m.id} />
