@@ -12,7 +12,6 @@ const Home = () => {
     setLoading(false);
   }, 2000);
 
-  console.log(loading);
   return (
     <div className="home relative w-[1000px] h-[650px] bg-gray-dark rounded-3xl flex gap-4 p-4 overflow-hidden">
       {loading && <Loading />}

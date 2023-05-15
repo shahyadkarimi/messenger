@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 // components
 import Messages from "./Messages";
@@ -8,7 +8,24 @@ import SendMsg from "./SendMsg";
 import { chatContext } from "../../contexts/ChatContext";
 
 const ChatPage = () => {
+  const [showMessage, setShowMessage] = useState(true)
+  
   const { data } = useContext(chatContext);
+
+
+  const backHandler = () => {
+    data.chatId = "null"
+    data.user = {}
+
+    setShowMessage(false)
+  }
+
+  useEffect(() => {
+    return () =>{
+      setShowMessage(true)
+    }
+
+  }, [showMessage])
 
   return (
     <div
@@ -20,6 +37,25 @@ const ChatPage = () => {
         <>
           <div className="user-info h-12 flex justify-between items-center mb-3">
             <div className="left-side flex items-center gap-2 ">
+              <button
+                onClick={backHandler}
+                className="back mr-3 bg-gray-light w-9 h-9 rounded-xl flex justify-center items-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="w-6 h-6 stroke-light"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"
+                  />
+                </svg>
+              </button>
               <img
                 src={data.user?.photoURL}
                 className="w-12 h-12 object-cover rounded-xl"
@@ -77,13 +113,15 @@ const ChatPage = () => {
               </svg>
             </div>
           </div>
-          <Messages />
+          {showMessage && <Messages />}
           <div>
             <SendMsg />
           </div>
         </>
       ) : (
-        <h2 className="text-light text-lg">Select your friends to chat</h2>
+        <h2 className="text-light text-lg">
+          Which friend do you want to chat with?
+        </h2>
       )}
     </div>
   );
