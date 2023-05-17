@@ -20,7 +20,7 @@ const Messages = () => {
       doc.exists() && setMessages(doc.data().messages);
     });
 
-    setLoading(false)
+    setLoading(false);
 
     return () => {
       unSub();
@@ -28,11 +28,14 @@ const Messages = () => {
   }, [data.chatId]);
 
   return (
-    <div className="messages relative w-full h-[calc(100%-110px)] lg:h-[calc(100%-100px)] p-2 overflow-y-scroll">
-      {loading && <Loading />}
-      {messages.map((m) => (
-        <Message msg={m} key={m.id} />
-      ))}
+    <div className="messages relative w-full h-[calc(100%-110px)] lg:h-[calc(100%-100px)] p-2 overflow-y-scroll overflow-x-hidden">
+      {!loading ? (
+        messages.map((m) => <Message msg={m} key={m.id} />)
+      ) : (
+        <div className="absolute flex justify-center items-center w-full h-full bg-gray-dark left-0 top-0 z-50">
+          <Loading />
+        </div>
+      )}
     </div>
   );
 };

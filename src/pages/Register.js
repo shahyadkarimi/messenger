@@ -4,32 +4,58 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db, storage } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
+import Loading from "../components/Loading";
 
 const Register = () => {
-  const [err, setErr] = useState(false);
+  const [err, setErr] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const username = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
     const profile = e.target[3].files[0];
 
-    try {
+    if (username.length > 3 && profile) {
+      let res;
       // create account
-      const res = await createUserWithEmailAndPassword(auth, email, password);
+      await createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          res = userCredential;
+        })
+        .catch((error) => {
+          setLoading(false);
+
+          if (error.code === "auth/email-already-in-use") {
+            setErr("This email already exist");
+          } else if (error.code === "auth/weak-password") {
+            setErr("Password must be more than 6 characters");
+          } else if (
+            error.code === "auth/invalid-email" ||
+            error.code === "auth/missing-password"
+          ) {
+            setErr("Please fill in all inputs");
+          } else if (error.code === "auth/network-request-failed") {
+            setErr("Please check your internet");
+          }
+
+          setTimeout(() => {
+            setErr(null);
+          }, 4000);
+        });
+
       // create a ref and image name
       const storageRef = ref(storage, username);
       // upload image
       const uploadTask = uploadBytesResumable(storageRef, profile);
 
       uploadTask.on(
-        (err) => {
-          console.log(err);
-        },
+        (err) => {},
         () => {
           // get uploaded image download link
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
@@ -52,8 +78,13 @@ const Register = () => {
           });
         }
       );
-    } catch (err) {
-      setErr(true);
+    } else {
+      setErr("Please fill in all inputs")
+      setLoading(false)
+
+      setTimeout(() => {
+        setErr(null);
+      }, 4000);
     }
   };
 
@@ -102,12 +133,20 @@ const Register = () => {
 
           <span>Add profile picture</span>
         </label>
-
+        {loading && (
+          <div className="w-full h-8 flex items-center justify-center">
+            <Loading />
+          </div>
+        )}
         <button className="bg-[#6b8afd] text-[#fff] py-2 rounded-lg">
           Sign Up
         </button>
+        {err && (
+          <div className="flex items-center justify-center text-[#b81c1c]">
+            {err}
+          </div>
+        )}
       </form>
-      {err && <span>Somthing Wrong !</span>}
       <p className="mt-6 text-light text-sm">
         Do you have an account ?{" "}
         <Link to="/login" className="text-base text-[#6b8afd] ml-1">

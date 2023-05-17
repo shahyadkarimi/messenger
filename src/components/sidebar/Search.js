@@ -35,7 +35,7 @@ const Search = () => {
         setFriend(u.data());
       });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   };
 
@@ -76,7 +76,7 @@ const Search = () => {
         dispatch({ type: "CHANGE_USER", payload: friend });
       }
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   };
 
@@ -85,7 +85,7 @@ const Search = () => {
       <div className="relative">
         <input
           className="w-full p-3 text-light bg-gray-light rounded-xl outline-none border-none placeholder:text-light"
-          placeholder="Find your friend"
+          placeholder="Find your friends"
           type="text"
           onChange={(e) => setUsername(e.target.value)}
           value={username}
