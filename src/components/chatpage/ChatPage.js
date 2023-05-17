@@ -29,7 +29,7 @@ const ChatPage = () => {
 
   return (
     <div
-      className={`chat-page absolute lg:relative z-20 bg-gray-dark p-2 lg:py-0 w-full h-full lg:w-[70%] lg:px-10 transition-all duration-200 ${data.user.displayName ? "right-0" : "-right-full"} ${!data.user.displayName && "flex justify-center items-center"} lg:left-0`}
+      className={`chat-page absolute lg:relative z-20 bg-gray-dark p-4 lg:py-0 w-full h-full lg:w-[70%] lg:px-10 transition-all duration-200 ${data.user.displayName ? "right-0" : "-right-full"} ${!data.user.displayName && "flex justify-center items-center"} lg:left-0`}
     >
       {data.user.displayName ? (
         <>
