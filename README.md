@@ -3,9 +3,11 @@
 Messenger on desktop
 
 ![alt text](./src/images/messnger-2.PNG)
+<br>
 Messenger on mobile
 
 ![alt text](./src/images/messnger-3.PNG)
+<br>
 Messenger on mobile
 
 Hey guys, this is a messenger web app where you can chat to your friends and share your photos,
