@@ -33,7 +33,7 @@ const ChatPage = () => {
     >
       {data.user.displayName ? (
         <>
-          <div className="user-info h-12 flex justify-between items-center mb-3">
+          <div className="user-info fixed lg:relative z-20 bg-gray-dark w-full left-0 top-0 p-4 h-16 lg:h-12 lg:p-0 flex justify-between items-center mb-3">
             <div className="left-side flex items-center gap-2 ">
               <button
                 onClick={backHandler}
