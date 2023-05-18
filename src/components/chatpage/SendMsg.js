@@ -83,7 +83,7 @@ const SendMsg = () => {
   };
 
   return (
-    <div className="SendMsg">
+    <div className="SendMsg fixed z-50 left-4 right-4 bottom-4 lg:relative lg:bottom-0 lg:right-0 lg:left-0">
       <div className="w-full h-12 flex gap-4 items-center justify-between">
         <div className="file-upload">
           <input
